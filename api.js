@@ -2,9 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-const app = express();
+const api = express();
 const PORT = 3000;
-
+const app = Router();
 // Connect to MongoDB
 mongoose.connect('mongodb+srv://ppraaanav:XBi2P1HIJX0cTxko@cluster0.sly2n9k.mongodb.net/', {
   useNewUrlParser: true,
@@ -43,7 +43,5 @@ app.post('/contact', async (req, res) => {
   else res.status(400).json({ message: 'unsuccessful' });
 });
 
-// Start the server
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
+api.use("/", router);
+export const handler = serverless(api);
