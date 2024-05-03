@@ -43,5 +43,5 @@ app.post('/contact', async (req, res) => {
   else res.status(400).json({ message: 'unsuccessful' });
 });
 
-api.use("/", router);
+api.use("/api/", router);
 export const handler = serverless(api);
